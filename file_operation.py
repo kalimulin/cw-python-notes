@@ -4,7 +4,7 @@ import Note
 
 def write_file(array, mode):
     if os.path.isfile('notes.csv'):
-        with open('notes.csv', 'w') as file:
+        with open('notes.csv', mode) as file:
             for notes in array:
                 file.write(Note.Note.to_string(notes))
                 file.write('\n')
@@ -22,7 +22,7 @@ def read_file():
         if len(notes) > 0:
             for n in notes:
                 split_n = n.split(';')
-                note = Note.Note(id=split_n[0], title=split_n[1], body=split_n[2], date=split_n[3])
+                note = Note.Note(note_id=split_n[0], title=split_n[1], body=split_n[2], date=split_n[3])
                 array.append(note)
         else:
             print('Нет сохраненных заметок.')
